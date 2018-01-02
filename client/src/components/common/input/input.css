@@ -1,0 +1,34 @@
+/* ****************************** */
+/* Forms */
+/* ****************************** */
+
+fieldset {
+	border: none;
+}
+
+/* label color */
+.input-field label {
+	color: #6F381B;
+}
+
+/* normal input */
+.input-field input:not(.browser-default):not([readonly]) {
+	border-bottom: 1px solid #6F381B;
+}
+
+/* focus input */
+.input-field input:not(.browser-default):focus:not([readonly]) {
+	border-bottom: 1px solid #352116;
+	box-shadow: 0 1px 0 0 #352116;
+	color: #352116;
+}
+
+/* focus input label */
+.input-field input:not(.browser-default):focus:not([readonly]) + label {
+	color: #352116;
+}
+
+/* error label */
+label.invalid {
+	color: #F44336;
+}

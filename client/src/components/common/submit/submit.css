@@ -1,0 +1,15 @@
+/* ****************************** */
+/* Buttons */
+/* ****************************** */
+
+/* block button */
+.btn-block {
+	width: 100%;
+}
+
+/* ruby button  */
+.ruby.btn:focus,
+.ruby.btn:hover {
+	background-color: #6F381B;
+}
+

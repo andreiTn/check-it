@@ -1,0 +1,32 @@
+/* ****************************** */
+/* General */
+/* ****************************** */
+.panel-wrap	 {
+	background-image: url('./images/bg.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center top;
+	min-height: 100vh;
+	min-width: 100%;
+}
+
+
+/* ****************************** */
+/* Sign In/Out panel */
+/* ****************************** */
+
+/* panel */
+.signin-panel {
+	margin-top: 4rem;
+	background-color: #CFCCBBCC;
+	padding: 20px 35px;
+	box-shadow: 5px 5px 5px -2px #6F381B4D; 
+}
+
+/* panel header image */
+.panel-header img {
+	display: block;
+	margin: auto;
+	width: 60px;
+	height: auto;
+}
