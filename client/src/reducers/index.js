@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
+import { routerReducer as router } from 'react-router-redux';
 
-const rootReducers = combineReducers({
-	form,
-	default: (state  = []) => state
-});
+import auth from './authentication';
+import about from './about';
 
-export default rootReducers;
+const rootReducer = combineReducers({ router, form, auth, about });
+
+export default rootReducer;

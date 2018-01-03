@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import * as actions from '../../actions';
 
 import './auth.css';
 
-export default class Signout extends Component {
+class Signout extends Component {
+	componentWillMount() {
+		this.props.signoutUser();
+	}
 	render() {
-		return <div>Signout</div>;
+		return <div>Sorry to see you go.</div>;
 	}
 }
+
+export default connect(null, { signoutUser: actions.signoutUser})(Signout);

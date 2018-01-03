@@ -2,8 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import thunk from 'redux-thunk';
+
+import createHistory from 'history/createBrowserHistory'
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
 
 import "../node_modules/materialize-css/dist/css/materialize.min.css";
 import './index.css';
@@ -13,26 +16,29 @@ import "../node_modules/materialize-css/dist/js/materialize.min.js";
 
 import registerServiceWorker from './registerServiceWorker';
 import rootReducers from './reducers';
+import { AUTH_USER } from './actions/types';
 
 import Wellcome from './components/wellcome';
-
-
 import Signin from './components/auth/signin';
 import Signup from './components/auth/signup';
 import Signout from './components/auth/signout';
 import ForgotPass from './components/auth/forgotpass';
 import About from './components/about/about';
 import Contact from './components/contact/contact';
-
-
 import Navbar from './components/navbar/navbar';
 
-const storeWithMiddleware = applyMiddleware(thunk)(createStore);
+const history = createHistory();
+const $routerMiddleware = routerMiddleware(history);
+const storeWithMiddleware = applyMiddleware(thunk, $routerMiddleware)(createStore);
 const store = storeWithMiddleware(rootReducers);
+
+if (localStorage.getItem('token')) {
+	store.dispatch({ type: AUTH_USER });	
+}
 
 ReactDOM.render(
 	<Provider store={ store }>
-		<BrowserRouter>
+		<ConnectedRouter history={ history }>
 			<div id="big_wrapper">
 				<Navbar />
 
@@ -46,7 +52,7 @@ ReactDOM.render(
 					<Route path="/" component={ Wellcome }></Route>
 				</Switch>
 			</div>
-		</BrowserRouter>
+		</ConnectedRouter>
 	</Provider>, 
 document.getElementById('root'));
 

@@ -32,6 +32,7 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
+  console.log("ERR:::::::: ",err);
   res.status(err.status || 500);
   res.send({err: `Error: ${err.status}`});
 });
